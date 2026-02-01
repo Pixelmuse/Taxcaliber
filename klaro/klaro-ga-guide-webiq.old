@@ -1,0 +1,221 @@
+# Klaro + GA4 Implementation Reference
+
+This guide describes the exact setup for implemention on WebIQ web apps so it can be easily replicated. It covers:
+
+1. Loading order and session handling
+2. Klaro configuration and consent bridge
+3. React/SPA integration for GA4 pageviews (where applicable)
+4. DataLayer contract used by GTM / GA4
+5. Application-side tracking helpers that feed additional events into `dataLayer`
+
+Use these snippets as-is or adapt class names/IDs to match the new project.
+
+---
+
+## 1. Load order & session reset (`public/index.html`)
+
+```html
+<link rel="stylesheet" href="/klaro.css" />
+<link rel="stylesheet" href="/klaro-overrides.css" />
+<!-- Google Tag Manager snippet -->
+
+<!-- Session helper: clear stored declines once per session -->
+<script>
+  (function klaroSessionReset() {
+    var STORAGE_KEY = 'klaro';
+    var SESSION_FLAG = 'klaroDeclineCleared';
+    try {
+      if (sessionStorage.getItem(SESSION_FLAG)) return;
+      var raw = localStorage.getItem(STORAGE_KEY);
+      if (!raw) return;
+      var consents = (JSON.parse(raw)?.consents) || {};
+      if (consents['gtm-analytics'] === false) {
+        localStorage.removeItem(STORAGE_KEY);
+        sessionStorage.setItem(SESSION_FLAG, '1');
+      }
+    } catch (err) {
+      console.warn('Klaro session reset skipped:', err);
+    }
+  })();
+</script>
+
+<script defer src="/klaro-config.js"></script>
+<script defer data-config="klaroConfig" src="/klaro.js"></script>
+```
+
+**Why:** If a visitor declines consent we want the banner to reappear next session, but not pop up repeatedly during the same visit. The helper clears Klaro’s persisted decline once per session.
+
+---
+
+## 2. Klaro config & consent bridge (`public/klaro-config.js`)
+
+```js
+const KlaroConsentBridge = (() => {
+  const consentState = new Map();
+  const EVENT_NAME = 'analytics-consent-change';
+
+  const ensureLayer = () => (window.dataLayer = window.dataLayer || []);
+
+  const pushState = (serviceName, consent, source) => {
+    ensureLayer().push({
+      event: 'consent_update',
+      consentService: serviceName,
+      consentSource: source,        // 'klaro-accept' | 'klaro-decline'
+      consentValue: consent,        // raw boolean from Klaro
+      analyticsConsent: serviceName === 'gtm-analytics' ? consent : undefined,
+    });
+  };
+
+  const dispatch = (consent, source) => {
+    window.__analyticsConsent = consent;
+    const detail = { consent, source };
+    if (typeof window.CustomEvent === 'function') {
+      window.dispatchEvent(new CustomEvent(EVENT_NAME, { detail }));
+    } else {
+      const evt = document.createEvent('CustomEvent');
+      evt.initCustomEvent(EVENT_NAME, false, false, detail);
+      window.dispatchEvent(evt);
+    }
+  };
+
+  return {
+    update(serviceName, consent, source = 'klaro') {
+      if (typeof consent !== 'boolean') return;
+      if (consentState.get(serviceName) === consent) return; // prevent duplicates
+      consentState.set(serviceName, consent);
+      pushState(serviceName, consent, source);
+      if (serviceName === 'gtm-analytics') dispatch(consent, source);
+    },
+  };
+})();
+
+window.__analyticsConsent = window.__analyticsConsent ?? false;
+
+window.klaroConfig = {
+  elementID: 'klaro',
+  acceptAll: true,
+  translations: { /* copy text from current config */ },
+  services: [
+    {
+      name: 'gtm-analytics',
+      title: 'Google Analytics 4 via GTM',
+      purposes: ['analytics'],
+      callback(consent, service) {
+        const source = consent ? 'klaro-accept' : 'klaro-decline';
+        KlaroConsentBridge.update(service.name, consent, source);
+      },
+    },
+  ],
+};
+```
+
+**Key behaviors**
+
+- **Single dataLayer contract**: every consent change pushes a named event (`consent_update`) so GTM Custom Event triggers can listen without guessing.
+- **Analytics alias**: `analyticsConsent` mirrors `consentValue` for the `gtm-analytics` service so GA4 tags only need to read a single boolean.
+- **React hook integration**: `window.__analyticsConsent` and the `analytics-consent-change` event keep the SPA aware of consent transitions.
+- **Debounce**: repeated callbacks with the same value are ignored to avoid double GTM hits.
+
+---
+
+## 3. React hook gating GA4 pageviews (`src/hooks/usePageView.ts`)
+
+```ts
+declare global {
+  interface Window {
+    dataLayer?: Array<Record<string, any>>;111w
+    __analyticsConsent?: boolean;
+  }
+}
+
+import { useEffect, useRef, useState } from 'react';
+import { useLocation } from 'react-router-dom';
+
+export function usePageView() {
+  const location = useLocation();
+  const lastPathRef = useRef('');
+  const [hasConsent, setHasConsent] = useState(() => !!window.__analyticsConsent);
+
+  useEffect(() => {
+    const handler = (evt: CustomEvent<{ consent: boolean }>) => setHasConsent(!!evt.detail?.consent);
+    window.addEventListener('analytics-consent-change', handler as EventListener);
+    return () => window.removeEventListener('analytics-consent-change', handler as EventListener);
+  }, []);
+
+  useEffect(() => {
+    if (!hasConsent) return;
+    const fullPath = location.pathname + location.search;
+    if (lastPathRef.current === fullPath) return;
+    lastPathRef.current = fullPath;
+    const title = document.title;
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      event: 'pageview',
+      page_path: fullPath,
+      page_title: title,
+    });
+  }, [hasConsent, location.pathname, location.search]);
+}
+```
+
+**Why:** GA4 pageview tags in GTM fire on the `pageview` event emitted by React. The hook guarantees that event exists only after consent, preventing duplicates with Klaro’s own startup event.
+
+---
+
+## 4. DataLayer events consumed by GTM/GA4
+
+| Event             | When it fires                                 | Payload fields                                                                 |
+|-------------------|-----------------------------------------------|---------------------------------------------------------------------------------|
+| `consent_update`  | Klaro callback accepts/declines a service     | `consentService`, `consentSource`, `consentValue`, `analyticsConsent?`          |
+| `pageview`        | SPA navigation with consent                   | `page_path`, `page_title`                                                       |
+| `ui_interaction` | Any UI element marked with `data-analytics-id` | `target`, `action`, `label?`, `timestamp`                                      |
+
+### Interaction helper (`src/lib/analytics.ts` + `src/hooks/useInteractionTracking.ts`)
+
+```ts
+// lib/analytics.ts
+export function trackInteraction(target: string, details = {}) {
+  if (!target || typeof window === 'undefined') return;
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push({
+    event: 'ui_interaction',
+    target,
+    timestamp: new Date().toISOString(),
+    ...details,
+  });
+}
+
+// hooks/useInteractionTracking.ts
+export function useInteractionTracking(root?: RefObject<HTMLElement>) {
+  useEffect(() => {
+    const targetNode = root?.current ?? document;
+    const handler = (evt: Event) => {
+      const el = (evt.target as HTMLElement | null)?.closest?.('[data-analytics-id]');
+      if (!el) return;
+      trackInteraction(el.getAttribute('data-analytics-id') || '', {
+        action: evt.type,
+        label: el.getAttribute('data-analytics-label') || undefined,
+      });
+    };
+    ['click', 'input'].forEach(name => targetNode.addEventListener(name, handler, true));
+    return () => ['click', 'input'].forEach(name => targetNode.removeEventListener(name, handler, true));
+  }, [root]);
+}
+```
+
+**Implementation notes**
+
+- `useInteractionTracking()` is mounted once near the top-level `<App />`.
+- Any button/link we want to track receives `data-analytics-id="..."` and optional `data-analytics-label`.
+- GTM listens for `ui_interaction` events to instrument specific UI actions without hand-written listener code.
+
+---
+
+## 5. Putting it together in GTM
+
+1. **Consent**: Create a Consent Initialization trigger in GTM referencing the `consent_update` event for debugging. GA4 tags should require the `analyticsConsent` variable (Data Layer Variable) to equal `true`.
+2. **Pageviews**: GA4 configuration/pageview tags fire on the `pageview` event emitted by React and include `page_path` and `page_title`.
+3. **Custom interactions**: Use GTM Custom Event triggers listening for `ui_interaction`. `target` tells you which element fired (e.g., `link_body_btn_inspect`).
+4. **Additional services**: If UTMGuard adds more Klaro services, map them in `SERVICE_KEYS` and extend the bridge so each has its own `...Consent` alias.
+
+Following these steps reproduces the exact behavior from GTM Inspector: users see the Klaro banner, consent choices push structured events into the dataLayer, GA4 waits for opt-in, and all tracked UI events share a consistent schema.

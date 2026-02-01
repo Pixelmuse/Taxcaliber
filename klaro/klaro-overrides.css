@@ -1,0 +1,184 @@
+/* ==========================================================
+   WebIQ Klaro Overrides
+   Match landing page light/dark theme
+   ========================================================== */
+
+.klaro {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: var(--txt-1);
+}
+
+/* -----------------------------
+   Banner (bottom notice)
+------------------------------ */
+.klaro .cookie-notice:not(.cookie-modal-notice),
+.klaro .cm-dialog.cm-dialog-type-notice {
+  position: fixed !important;
+  bottom: 2.5rem !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  max-width: 560px !important;
+  width: calc(100% - 2rem);
+  background: var(--bg-card) !important;
+  color: var(--txt-1) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: 16px !important;
+  box-shadow: var(--shadow-lg) !important;
+  z-index: 9999;
+  text-align: left;
+  padding: 1.1rem 1.4rem;
+  backdrop-filter: blur(12px);
+}
+
+.klaro .cookie-notice h1,
+.klaro .cookie-notice h2,
+.klaro .cookie-notice p {
+  color: var(--txt-1) !important;
+}
+
+.klaro .cookie-notice p {
+  color: var(--txt-2) !important;
+}
+
+/* Dark mode: improve readability on dark background */
+[data-theme="dark"] .klaro .cookie-notice h1,
+[data-theme="dark"] .klaro .cookie-notice h2,
+[data-theme="dark"] .klaro .cookie-notice p,
+[data-theme="dark"] .klaro .cookie-modal .cm-header h1,
+[data-theme="dark"] .klaro .cookie-modal .cm-body p,
+[data-theme="dark"] .klaro .cookie-modal .cm-body span,
+[data-theme="dark"] .klaro .cm-services .cm-list-label,
+[data-theme="dark"] .klaro .cm-service-title,
+[data-theme="dark"] .klaro .cm-service-description {
+  color: #f1f5f9 !important;
+}
+
+[data-theme="dark"] .klaro .cookie-notice p {
+  color: #e2e8f0 !important;
+}
+
+[data-theme="dark"] .klaro .cm-body,
+[data-theme="dark"] .klaro .cm-modal,
+[data-theme="dark"] .klaro .cm-services {
+  color: #f1f5f9 !important;
+}
+
+/* Force override for Klaro's inline theme vars */
+[data-theme="dark"] #klaro {
+  --light1: #f1f5f9 !important;
+  --light2: #e2e8f0 !important;
+  --dark1: #0b0f16 !important;
+  --dark2: #121826 !important;
+}
+
+[data-theme="dark"] #klaro .klaro .cookie-modal p,
+[data-theme="dark"] #klaro .klaro .cookie-modal span,
+[data-theme="dark"] #klaro .klaro .cookie-notice p,
+[data-theme="dark"] #klaro .klaro .cookie-notice span {
+  color: #f1f5f9 !important;
+}
+
+/* links ("Let me choose") */
+.klaro .cookie-notice a,
+.klaro .cm-link {
+  color: var(--cyan) !important;
+  font-weight: 600;
+  text-decoration: none;
+}
+.klaro .cookie-notice a:hover {
+  text-decoration: underline;
+}
+
+/* -----------------------------
+   Buttons
+------------------------------ */
+.klaro .cookie-notice .cn-ok,
+.klaro .cookie-notice .cn-buttons {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+/* primary ("Accept") button */
+.klaro .cm-btn.cm-btn-success,
+.klaro .cookie-notice .cm-btn.cm-btn-success {
+  background: var(--grad) !important;
+  color: #fff !important;
+  border-radius: 10px !important;
+  border: none !important;
+  padding: 0.55rem 1.35rem !important;
+  font-weight: 600;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: var(--shadow);
+}
+.klaro .cm-btn.cm-btn-success:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* secondary ("I decline") button */
+.klaro .cm-btn.cm-btn-close,
+.klaro .cm-btn.cm-btn-decl {
+  background: var(--bg-2) !important;
+  color: var(--txt-1) !important;
+  border-radius: 10px !important;
+  border: 1px solid var(--border) !important;
+  padding: 0.55rem 1.15rem !important;
+  font-weight: 600;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.klaro .cm-btn.cm-btn-close:hover,
+.klaro .cm-btn.cm-btn-decl:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow);
+}
+
+/* -----------------------------
+   Toggles / Switches
+------------------------------ */
+.klaro .cm-list-input:checked + .cm-list-label .slider,
+.klaro .cm-switch-container .cm-list-input:checked + .cm-list-label .slider {
+  background-color: var(--cyan) !important;
+}
+
+.klaro .cm-list-input:checked + .cm-list-label .slider::before {
+  background-color: #fff !important;
+}
+
+.klaro .cm-switch-container .cm-list-label:hover .slider {
+  background-color: #60e0f8 !important;
+  transition: background-color 0.3s ease;
+}
+
+.klaro .cm-switch-container a,
+.klaro .cookie-modal a {
+  color: var(--cyan) !important;
+}
+
+.klaro .cm-switch input:focus + .slider,
+.klaro .cm-btn:focus {
+  outline: 2px solid #60e0f8 !important;
+  outline-offset: 2px;
+}
+
+/* -----------------------------
+   Modal ("Let me choose")
+------------------------------ */
+.klaro .cookie-modal .cm-modal.cm-klaro {
+  background: var(--bg-card) !important;
+  color: var(--txt-1) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: 16px !important;
+  box-shadow: var(--shadow-lg) !important;
+  padding: 1.5rem !important;
+}
+
+.klaro .cookie-modal .cm-header h1 {
+  color: var(--txt-1) !important;
+}
+
+.klaro .cookie-modal .cm-body p,
+.klaro .cookie-modal .cm-body span {
+  color: var(--txt-2) !important;
+}
