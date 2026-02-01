@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Montserrat } from "next/font/google";
 import Script from "next/script";
+import { Suspense } from "react";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -125,7 +126,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             }}
           />
           <Header />
-          <GtmManager />
+          <Suspense fallback={null}>
+            <GtmManager />
+          </Suspense>
           <KlaroLoader />
           <main>{children}</main>
           <Footer />
