@@ -63,11 +63,11 @@ const credentials = [
 export default function AboutPage() {
   return (
     <>
-      <section className="about-hero">
-        <div className="container about-hero__content">
-          <span className="about-tag">About Taxcaliber</span>
-          <h1>Virtual accounting built on trust and clarity</h1>
-          <p>
+      <section className="page-hero page-hero--dark">
+        <div className="container page-hero__content">
+          <span className="page-hero__eyebrow">About Taxcaliber</span>
+          <h1 className="page-hero__title">Virtual accounting built on trust and clarity</h1>
+          <p className="page-hero__copy">
             Taxcaliber is a U.S.-based, fully virtual bookkeeping and tax firm built for real people running real
             businesses. No jargon. No judgment. Just clear, accurate support.
           </p>
@@ -181,10 +181,10 @@ export default function AboutPage() {
           <Link
             className="about-cta__button"
             href="/contact"
-            id="link_body_cta_book-consultation"
-            data-analytics-id="link_body_cta_book-consultation"
+            id="link_body_cta_book-introductory-call"
+            data-analytics-id="link_body_cta_book-introductory-call"
           >
-            Book a Free Consultation
+            Book a Free Introductory Call
           </Link>
         </div>
       </section>

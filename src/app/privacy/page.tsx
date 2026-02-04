@@ -11,11 +11,11 @@ export const metadata: Metadata = {
 export default function PrivacyPage() {
   return (
     <>
-      <section className="about-hero">
-        <div className="container about-hero__content">
-          <span className="about-tag">Privacy</span>
-          <h1>Privacy Policy</h1>
-          <p>Effective Date: February 1, 2026</p>
+      <section className="page-hero page-hero--dark">
+        <div className="container page-hero__content">
+          <span className="page-hero__eyebrow">Privacy</span>
+          <h1 className="page-hero__title">Privacy Policy</h1>
+          <p className="page-hero__copy">Effective Date: February 1, 2026</p>
         </div>
       </section>
 

@@ -56,7 +56,7 @@ const services = [
 
 const steps = [
   {
-    title: "Schedule a free consultation",
+    title: "Schedule a free introductory call",
     description: "We discuss your needs and determine the best service package for your situation.",
   },
   {
@@ -76,31 +76,17 @@ const steps = [
 export default function ServicesPage() {
   return (
     <>
-      <section className="services-hero">
-        <div className="container services-hero__content">
-          <span className="services-hero__tag">Services</span>
-          <h1 className="services-hero__title">
-            Clear, reliable support for <span className="services-hero__highlight">your finances</span>
+      <section className="page-hero page-hero--dark">
+        <div className="container page-hero__content">
+          <span className="page-hero__eyebrow">Services</span>
+          <h1 className="page-hero__title">
+            Clear, reliable support for <span className="page-hero__highlight">your finances</span>
           </h1>
-          <p className="services-hero__copy">
+          <p className="page-hero__copy">
             From monthly bookkeeping to tax prep, Taxcaliber keeps your business on track with responsive, judgment-free
             guidance.
           </p>
-          <div className="services-hero__panel">
-            <h3>Pricing transparency</h3>
-            <p>
-              Individual tax returns start at $350. Small business returns like S-Corps start at $750. Monthly bookkeeping
-              is custom-tailored based on transaction volume and complexity.
-            </p>
-            <Link
-              className="services-btn"
-              href="/contact"
-              id="link_body_cta_request-quote"
-              data-analytics-id="link_body_cta_request-quote"
-            >
-              Request a Quote
-            </Link>
-          </div>
+
         </div>
       </section>
 
@@ -171,10 +157,10 @@ export default function ServicesPage() {
           <Link
             className="services-cta__button"
             href="/contact"
-            id="link_body_cta_book-consultation"
-            data-analytics-id="link_body_cta_book-consultation"
+            id="link_body_cta_book-introductory-call"
+            data-analytics-id="link_body_cta_book-introductory-call"
           >
-            Book a Free Consultation
+            Book a Free Introductory Call
           </Link>
         </div>
       </section>

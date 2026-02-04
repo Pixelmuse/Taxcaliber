@@ -46,7 +46,7 @@ const faqs = [
       "We use secure, encrypted file-sharing methods and a client portal for sensitive documents.",
   },
   {
-    question: "Do you offer free consultations?",
+    question: "Do you offer a free discovery call?",
     answer:
       "Yes. We offer a free 15-minute discovery call for all new potential clients.",
   },
@@ -55,20 +55,17 @@ const faqs = [
 export default function FAQPage() {
   return (
     <>
-      <section className="faq-hero">
-        <div className="container faq-hero__content">
-          <span className="faq-tag">FAQ</span>
-          <h1>
-            Hi, <span className="faq-gradient">how can we help?</span>
+      <section className="page-hero page-hero--dark">
+        <div className="container page-hero__content">
+          <span className="page-hero__eyebrow">FAQ</span>
+          <h1 className="page-hero__title">
+            Hi, <span className="page-hero__highlight">how can we help?</span>
           </h1>
-          <p>
+          <p className="page-hero__copy">
             We want you to feel confident before you reach out. Here are the most common questions we hear from new
             clients.
           </p>
-          <div className="faq-hero__card">
-            <h3>Still unsure?</h3>
-            <p>Reach out and we will point you in the right direction, even if we are not the perfect fit.</p>
-          </div>
+
         </div>
       </section>
 
@@ -90,7 +87,7 @@ export default function FAQPage() {
             tax planning.
           </p>
           <Link className="faq-cta__button" href="/contact">
-            Book a Free Consultation
+            Book a Free Introductory Call
           </Link>
         </div>
       </section>

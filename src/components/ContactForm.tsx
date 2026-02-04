@@ -78,7 +78,7 @@ export default function ContactForm() {
           </option>
           <option value="general">General Inquiry</option>
           <option value="bookkeeping">Monthly Bookkeeping</option>
-          <option value="tax-prep">Tax Preparation</option>
+          <option value="tax-preparation">Tax Preparation</option>
           <option value="payroll">Payroll Services</option>
           <option value="consultation">Schedule Consultation</option>
           <option value="other">Other</option>

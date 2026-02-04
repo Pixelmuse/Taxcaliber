@@ -11,11 +11,11 @@ export const metadata: Metadata = {
 export default function TermsPage() {
   return (
     <>
-      <section className="about-hero">
-        <div className="container about-hero__content">
-          <span className="about-tag">Terms</span>
-          <h1>Terms and Conditions</h1>
-          <p>Effective Date: February 1, 2026</p>
+      <section className="page-hero page-hero--dark">
+        <div className="container page-hero__content">
+          <span className="page-hero__eyebrow">Terms</span>
+          <h1 className="page-hero__title">Terms and Conditions</h1>
+          <p className="page-hero__copy">Effective Date: February 1, 2026</p>
         </div>
       </section>
 

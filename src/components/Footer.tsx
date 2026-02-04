@@ -12,12 +12,12 @@ export default function Footer() {
               href="/"
               id="link_foot_cta_logo"
               data-analytics-id="link_foot_cta_logo"
-              aria-label="TaxCaliber home"
+              aria-label="Taxcaliber home"
             >
               <span className="footer__logo-mark" aria-hidden="true">
                 <Image src="/images/taxcaliber-logo-140x140.png" alt="" width={46} height={46} />
               </span>
-              <span className="footer__logo-text">TaxCaliber</span>
+              <span className="footer__logo-text">Taxcaliber</span>
             </Link>
             <p>Virtual CPA and bookkeeping services for modern small businesses.</p>
             <div className="footer__social">
@@ -104,22 +104,60 @@ export default function Footer() {
           </div>
           <div>
             <h4>Contact</h4>
-            <p>19820 N 7th St. Ste 230</p>
-            <p>Phoenix, AZ 85027</p>
-            <p>
+            <div className="footer__contact-item">
+              <span className="footer__contact-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24">
+                  <path
+                    d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                  />
+                  <circle cx="12" cy="10" r="3" fill="currentColor" />
+                </svg>
+              </span>
+              <div>
+                19820 N 7th St. Ste 230
+                <br />
+                Phoenix, AZ 85027
+              </div>
+            </div>
+            <div className="footer__contact-item">
+              <span className="footer__contact-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24">
+                  <path
+                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                  />
+                </svg>
+              </span>
               <a href="tel:6028193395" id="link_foot_text_phone" data-analytics-id="link_foot_text_phone">
                 602-819-3395
               </a>
-            </p>
-            <p>
-              <a
-                href="mailto:info@taxcaliber.com"
-                id="link_foot_text_email"
-                data-analytics-id="link_foot_text_email"
-              >
+            </div>
+            <div className="footer__contact-item">
+              <span className="footer__contact-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24">
+                  <path
+                    d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                  />
+                  <polyline
+                    points="22,6 12,13 2,6"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                  />
+                </svg>
+              </span>
+              <a href="mailto:info@taxcaliber.com" id="link_foot_text_email" data-analytics-id="link_foot_text_email">
                 info@taxcaliber.com
               </a>
-            </p>
+            </div>
           </div>
           <div>
             <h4>Start Here</h4>
@@ -132,6 +170,25 @@ export default function Footer() {
             >
               Contact Us
             </Link>
+            <a
+              className="button button--ghost"
+              href="https://taxcaliber.taxdome.com/login"
+              id="link_foot_cta_client-login"
+              data-analytics-id="link_foot_cta_client-login"
+              style={{ marginTop: "12px" }}
+            >
+              Client Login
+            </a>
+          </div>
+        </div>
+        <div className="footer__trust">
+          <div className="footer__trust-label">Proud member of professional associations</div>
+          <div className="footer__trust-badges">
+            <Image src="/images/ASCPA-logo.webp" alt="ASCPA" width={120} height={48} />
+            <Image src="/images/NATP-logo.webp" alt="NATP" width={120} height={48} />
+            <Image src="/images/NSA-logo.webp" alt="NSA" width={120} height={48} />
+            <Image src="/images/Enrolled-Agent.webp" alt="IRS Enrolled Agent" width={140} height={48} />
+            <Image src="/images/Certified-CPA.webp" alt="Certified CPA" width={140} height={48} />
           </div>
         </div>
         <div className="footer__fineprint">(c) 2026 TaxCaliber, LLC. All rights reserved.</div>

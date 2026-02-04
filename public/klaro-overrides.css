@@ -8,6 +8,19 @@
   color: var(--txt-1);
 }
 
+#klaro,
+.klaro {
+  --bg-card: #ffffff;
+  --bg-2: #f1f1f4;
+  --txt-1: #1d1a1f;
+  --txt-2: #4d4654;
+  --border: #d9d1df;
+  --shadow: 0 8px 18px rgba(18, 12, 28, 0.12);
+  --shadow-lg: 0 18px 42px rgba(18, 12, 28, 0.18);
+  --grad: linear-gradient(135deg, #5a2c92, #6a36a8);
+  --cyan: #5a2c92;
+}
+
 /* -----------------------------
    Banner (bottom notice)
 ------------------------------ */
@@ -27,7 +40,7 @@
   z-index: 9999;
   text-align: left;
   padding: 1.1rem 1.4rem;
-  backdrop-filter: blur(12px);
+  backdrop-filter: blur(8px);
 }
 
 .klaro .cookie-notice h1,
@@ -38,6 +51,16 @@
 
 .klaro .cookie-notice p {
   color: var(--txt-2) !important;
+}
+
+.klaro .cookie-notice {
+  background-color: var(--bg-card) !important;
+}
+
+.klaro .cookie-notice strong,
+.klaro .cookie-notice span,
+.klaro .cookie-notice li {
+  color: var(--txt-1) !important;
 }
 
 /* Dark mode: improve readability on dark background */
@@ -174,6 +197,22 @@
   padding: 1.5rem !important;
 }
 
+.klaro .cookie-modal .cm-modal .cm-header {
+  color: var(--txt-1) !important;
+}
+
+.klaro .cookie-modal .cm-modal .cm-body {
+  color: var(--txt-2) !important;
+}
+
+.klaro .cookie-modal .cm-modal .cm-footer {
+  background: transparent !important;
+}
+
+.klaro .cookie-modal .cm-bg {
+  background: rgba(15, 13, 24, 0.6) !important;
+}
+
 .klaro .cookie-modal .cm-header h1 {
   color: var(--txt-1) !important;
 }
@@ -181,4 +220,39 @@
 .klaro .cookie-modal .cm-body p,
 .klaro .cookie-modal .cm-body span {
   color: var(--txt-2) !important;
+}
+
+.klaro .cookie-modal h1,
+.klaro .cookie-modal h2,
+.klaro .cookie-modal h3,
+.klaro .cookie-modal h4,
+.klaro .cookie-modal h5,
+.klaro .cookie-modal h6,
+.klaro .cookie-modal p,
+.klaro .cookie-modal span,
+.klaro .cookie-modal strong,
+.klaro .cookie-modal li,
+.klaro .cookie-modal ul,
+.klaro .context-notice p,
+.klaro .context-notice span,
+.klaro .context-notice strong,
+.klaro .context-notice li {
+  color: var(--txt-1) !important;
+}
+
+.klaro .cookie-modal .cm-list-title,
+.klaro .cookie-modal .cm-service-title,
+.klaro .cookie-modal .cm-list-description,
+.klaro .cookie-modal .cm-service-description {
+  color: var(--txt-2) !important;
+}
+
+.klaro .cookie-modal .cm-switch-container,
+.klaro .cookie-modal .cm-list-label {
+  color: var(--txt-1) !important;
+}
+
+.klaro .cookie-modal .cm-list-label span,
+.klaro .cookie-modal .cm-list-label strong {
+  color: var(--txt-1) !important;
 }

@@ -91,7 +91,7 @@ const services = [
 ];
 
 const steps = [
-  "Schedule a free consultation",
+  "Schedule a free introductory call",
   "We review your books and goals",
   "Receive a clear quote with no surprise fees",
   "Start services with year-round support",
@@ -143,13 +143,13 @@ export default function HomePage() {
                 <CheckIcon /> US based, virtual firm
               </li>
               <li className="hero__item">
-                <CheckIcon /> Monthly bookkeeping and clean-up
+                <CheckIcon /> Monthly bookkeeping & clean-up
               </li>
               <li className="hero__item">
-                <CheckIcon /> Expert tax prep for businesses
+                <CheckIcon /> Expert tax preparation
               </li>
               <li className="hero__item">
-                <CheckIcon /> Rental property and Airbnb specialists
+                <CheckIcon /> Rental property & Airbnb specialists
               </li>
             </ul>
             <div className="hero__actions">

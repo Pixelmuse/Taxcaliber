@@ -4,7 +4,7 @@ import { Handshake, MessageCircle, ShieldCheck, Target } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Contact",
-  description: "Get in touch with Taxcaliber for a free consultation.",
+  description: "Get in touch with Taxcaliber for a free introductory call.",
   alternates: {
     canonical: "/contact",
   },
@@ -13,22 +13,22 @@ export const metadata: Metadata = {
 export default function ContactPage() {
   return (
     <>
-      <section className="contact-hero contact-hero--services">
-        <div className="container contact-hero__content">
-          <span className="contact-hero__tag contact-hero__tag--plain">Contact</span>
-          <h1>Let&apos;s start the conversation</h1>
-          <p>
-            Have questions about our services or ready to schedule a consultation? We&apos;re here to help you simplify your
+      <section className="page-hero page-hero--dark">
+        <div className="container page-hero__content">
+          <span className="page-hero__eyebrow">Contact</span>
+          <h1 className="page-hero__title">Let&apos;s start the conversation</h1>
+          <p className="page-hero__copy">
+            Have questions about our services or ready to schedule a discovery call? We&apos;re here to help you simplify your
             finances with expert guidance.
           </p>
           <div className="contact-hero__stats">
             <div className="contact-stat">
-              <span className="contact-stat__number">{"\u003c"} 2hrs</span>
+              <span className="contact-stat__number">{"\u003c"} 24hrs</span>
               <span className="contact-stat__label">Average response time</span>
             </div>
             <div className="contact-stat">
               <span className="contact-stat__number">100%</span>
-              <span className="contact-stat__label">Free consultations</span>
+              <span className="contact-stat__label">Free discovery call</span>
             </div>
             <div className="contact-stat">
               <span className="contact-stat__number">15min</span>
@@ -57,6 +57,7 @@ export default function ContactPage() {
                   <br />
                   Phoenix, AZ 85027
                 </p>
+                <p> <strong>* Visits by appointment only</strong></p>
               </div>
             </div>
             <div className="contact-info-item">
@@ -153,7 +154,7 @@ export default function ContactPage() {
             <p>We respond to all inquiries within 1-2 business days, and often sooner during business hours.</p>
           </div>
           <div className="contact-faq__item">
-            <h3>Is the consultation really free?</h3>
+            <h3>Is the discovery call really free?</h3>
             <p>Yes. We offer a complimentary 15-minute discovery call to discuss your needs and see if we are a good fit.</p>
           </div>
           <div className="contact-faq__item">
