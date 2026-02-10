@@ -22,7 +22,9 @@ export default function Footer() {
             <p>Virtual CPA and bookkeeping services for modern small businesses.</p>
             <div className="footer__social">
               <a
-                href="https://www.facebook.com"
+                href="https://www.facebook.com/TaxcaliberLLC"
+                target="_blank"
+                rel="noopener noreferrer"
                 id="link_foot_logo_facebook"
                 data-analytics-id="link_foot_logo_facebook"
                 aria-label="Facebook"
@@ -35,7 +37,9 @@ export default function Footer() {
                 </svg>
               </a>
               <a
-                href="https://www.instagram.com"
+                href="https://www.instagram.com/taxcaliberllc/"
+                target="_blank"
+                rel="noopener noreferrer"
                 id="link_foot_logo_instagram"
                 data-analytics-id="link_foot_logo_instagram"
                 aria-label="Instagram"
@@ -52,7 +56,9 @@ export default function Footer() {
                 </svg>
               </a>
               <a
-                href="https://www.linkedin.com"
+                href="https://www.linkedin.com/company/taxcaliber/"
+                target="_blank"
+                rel="noopener noreferrer"
                 id="link_foot_logo_linkedin"
                 data-analytics-id="link_foot_logo_linkedin"
                 aria-label="LinkedIn"
@@ -187,8 +193,8 @@ export default function Footer() {
             <Image src="/images/ASCPA-logo.webp" alt="ASCPA" width={120} height={48} />
             <Image src="/images/NATP-logo.webp" alt="NATP" width={120} height={48} />
             <Image src="/images/NSA-logo.webp" alt="NSA" width={120} height={48} />
-            <Image src="/images/Enrolled-Agent.webp" alt="IRS Enrolled Agent" width={140} height={48} />
-            <Image src="/images/Certified-CPA.webp" alt="Certified CPA" width={140} height={48} />
+            <Image src="/images/AAATP-logo.webp" alt="AAATP" width={140} height={48} />
+            <Image src="/images/WAATP-logo.webp" alt="WAATP" width={140} height={48} />
           </div>
         </div>
         <div className="footer__fineprint">(c) 2026 TaxCaliber, LLC. All rights reserved.</div>

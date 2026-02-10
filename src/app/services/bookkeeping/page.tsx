@@ -16,8 +16,8 @@ import {
 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Bookkeeping",
-  description: "Monthly bookkeeping services with accurate reconciliations and reporting.",
+  title: "Virtual Monthly Bookkeeping Services | Taxcaliber",
+  description: "Professional monthly bookkeeping with reconciliations and clear reports. Stress-free financial management for small businesses nationwide.",
   alternates: {
     canonical: "/services/bookkeeping",
   },
@@ -321,7 +321,7 @@ export default function BookkeepingPage() {
 
       <section className="services-cta">
         <div className="container services-cta__content">
-          <h2>
+          <h2 className="section__title">
             Ready to simplify your bookkeeping?
             <br />
             Start your journey today.

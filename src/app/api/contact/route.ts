@@ -8,10 +8,28 @@ type ContactPayload = {
   email: string;
   subject: string;
   message: string;
+  turnstileToken?: string;
 };
 
 const isValidPayload = (payload: ContactPayload) =>
   payload.name.trim() && payload.email.trim() && payload.subject.trim() && payload.message.trim();
+
+const verifyTurnstile = async (token: string) => {
+  const secret = process.env.TURNSTILE_SECRET_KEY;
+  if (!secret) {
+    return { ok: false, error: "Turnstile secret not configured." };
+  }
+  const formData = new URLSearchParams();
+  formData.append("secret", secret);
+  formData.append("response", token);
+  const response = await fetch("https://challenges.cloudflare.com/turnstile/v0/siteverify", {
+    method: "POST",
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    body: formData.toString(),
+  });
+  const result = (await response.json()) as { success: boolean };
+  return { ok: result.success, error: result.success ? undefined : "Turnstile verification failed." };
+};
 
 export async function POST(request: Request) {
   try {
@@ -19,6 +37,15 @@ export async function POST(request: Request) {
 
     if (!isValidPayload(payload)) {
       return NextResponse.json({ ok: false, error: "Missing required fields." }, { status: 400 });
+    }
+
+    if (!payload.turnstileToken) {
+      return NextResponse.json({ ok: false, error: "Turnstile token missing." }, { status: 400 });
+    }
+
+    const turnstileResult = await verifyTurnstile(payload.turnstileToken);
+    if (!turnstileResult.ok) {
+      return NextResponse.json({ ok: false, error: turnstileResult.error }, { status: 400 });
     }
 
     const fromEmail = process.env.RESEND_FROM_EMAIL;

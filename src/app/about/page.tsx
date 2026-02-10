@@ -3,9 +3,9 @@ import Image from "next/image";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "About",
+  title: "About Taxcaliber | Virtual CPA Phoenix Arizona",
   description:
-    "Taxcaliber is a U.S.-based, fully virtual CPA and bookkeeping firm led by Ruth Ortega, CPA, EA.",
+    "Phoenix-based virtual CPA firm led by Ruth Ortega, CPA, EA. Judgment-free tax and bookkeeping for small businesses nationwide.",
   alternates: {
     canonical: "/about",
   },
@@ -51,8 +51,6 @@ const values = [
 ];
 
 const credentials = [
-  { name: "IRS Enrolled Agent", src: "/images/Enrolled-Agent.webp" },
-  { name: "Certified CPA", src: "/images/Certified-CPA.webp" },
   { name: "ASCPA", src: "/images/ASCPA-logo.webp" },
   { name: "NATP", src: "/images/NATP-logo.webp" },
   { name: "NSA", src: "/images/NSA-logo.webp" },
@@ -85,9 +83,9 @@ export default function AboutPage() {
             />
           </div>
           <div className="about-mission__content">
-            <span className="about-tag">Who we are</span>
-            <h2>A US-based virtual firm built for real people</h2>
-            <p>
+            <span className="section__eyebrow">Who we are</span>
+            <h2 className="section__title">A US-based virtual firm built for real people</h2>
+            <p className="section__subtitle" >
               We understand the complexities of tax code and bookkeeping can be overwhelming. Our mission is to strip away
               the confusion and provide clarity, confidence, and peace of mind.
             </p>
@@ -102,16 +100,16 @@ export default function AboutPage() {
       <section className="about-values">
         <div className="container">
           <div className="about-values__header">
-            <span className="about-tag">Why clients choose us</span>
-            <h2>Our commitment to you</h2>
+            <span className="section__eyebrow">Why clients choose us</span>
+            <h2 className="section__title">Our commitment to you</h2>
             <p>
               We are guided by principles that put your success first, making complex accounting simple and stress-free.
             </p>
           </div>
-          <div className="about-values__grid">
+          <div className="grid-3 feature-grid" style={{ textAlign: "left" }}>
             {values.map((value) => (
-              <div className="about-value-card" key={value.title}>
-                <div className="about-value-card__icon" aria-hidden="true">
+              <div className="card feature-card" key={value.title}>
+                <div className="feature-card__icon" aria-hidden="true">
                   <span className="material-icons">{value.icon}</span>
                 </div>
                 <h3>{value.title}</h3>
@@ -128,8 +126,12 @@ export default function AboutPage() {
             <Image src="/images/ruth-ortega-headshot.webp" alt="Ruth Ortega, CPA, EA" width={520} height={680} />
           </div>
           <div className="about-founder__content">
-            <span className="about-tag">Founder & principal</span>
-            <h2>Ruth Ortega, CPA, EA</h2>
+            <span className="section__eyebrow">Founder & principal</span>
+            <h2 className="section__title">Ruth Ortega, CPA, EA</h2>
+            <div className="about-founder__badges" aria-label="Professional credentials">
+              <Image src="/images/Certified-CPA.webp" alt="Certified CPA credential badge" width={112} height={112} />
+              <Image src="/images/Enrolled-Agent.webp" alt="Enrolled Agent credential badge" width={112} height={112} />
+            </div>
             <div className="about-founder__title">Certified Public Accountant & Enrolled Agent</div>
             <p>
               Ruth founded Taxcaliber to bring high-caliber accounting expertise to small business owners without the
@@ -142,8 +144,8 @@ export default function AboutPage() {
               trust.
             </p>
             <p>
-              With professional certifications including CPA and EA credentials, Ruth brings both technical expertise and
-              genuine care to every client relationship. She is your partner in financial success.
+              As a CPA licensed in Arizona and an Enrolled Agent, Ruth combines deep technical expertise with genuine 
+              care for every client. She is your partner in long-term financial success
             </p>
           </div>
         </div>
@@ -152,8 +154,8 @@ export default function AboutPage() {
       <section className="about-credentials">
         <div className="container about-credentials__content">
           <div className="about-credentials__header">
-            <span className="about-tag">Professional affiliations</span>
-            <h2>Credentials that back up our expertise</h2>
+            <span className="section__eyebrow">Professional affiliations</span>
+            <h2 className="section__title">Credentials that back up our expertise</h2>
             <p>Proud member of leading professional accounting and tax organizations.</p>
           </div>
           <div className="about-credentials__grid">
@@ -169,7 +171,7 @@ export default function AboutPage() {
 
       <section className="about-cta">
         <div className="container about-cta__content">
-          <h2>
+          <h2 className="section__title">
             Ready to simplify your taxes?
             <br />
             Start your journey today.

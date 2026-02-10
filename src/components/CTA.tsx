@@ -4,7 +4,7 @@ export default function CTA() {
   return (
     <section className="cta-banner">
       <div className="container">
-        <h2>
+        <h2 className="section__title">
           Ready to simplify your taxes?
           <br />
           <span style={{ color: "rgba(255, 255, 255, 0.8)" }}>Start your journey today.</span>

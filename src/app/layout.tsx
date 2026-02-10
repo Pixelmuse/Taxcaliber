@@ -77,6 +77,7 @@ export default function RootLayout({
       <head>
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
         <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet" />
+        <link rel="preconnect" href="https://challenges.cloudflare.com" />
         <link href="/klaro.css" rel="stylesheet" />
         <link href="/klaro-overrides.css" rel="stylesheet" />
         <Script
@@ -91,6 +92,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           }}
         />
         <Script src="https://assets.calendly.com/assets/external/widget.js" strategy="afterInteractive" />
+        <Script src="https://challenges.cloudflare.com/turnstile/v0/api.js" strategy="afterInteractive" />
       </head>
       <body className={`${bodyFont.variable} ${displayFont.variable}`}>
         <noscript>

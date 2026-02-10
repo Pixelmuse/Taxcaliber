@@ -3,8 +3,8 @@ import Link from "next/link";
 import FaqClient from "@/components/FaqClient";
 
 export const metadata: Metadata = {
-  title: "FAQ",
-  description: "Answers to common questions about Taxcaliber's virtual CPA and bookkeeping services.",
+  title: "Tax & Bookkeeping FAQs | Taxcaliber",
+  description: "Common questions about our virtual bookkeeping, tax prep, and services. Learn how Taxcaliber helps businesses nationwide.",
   alternates: {
     canonical: "/faq",
   },
@@ -46,9 +46,9 @@ const faqs = [
       "We use secure, encrypted file-sharing methods and a client portal for sensitive documents.",
   },
   {
-    question: "Do you offer a free discovery call?",
+    question: "Do you offer a free introductory meeting?",
     answer:
-      "Yes. We offer a free 15-minute discovery call for all new potential clients.",
+      "Yes. We offer a free 15-minute introductory meeting for all new potential clients.",
   },
 ];
 
@@ -77,13 +77,13 @@ export default function FAQPage() {
 
       <section className="faq-cta">
         <div className="container faq-cta__content">
-          <h2>
+          <h2 className="section__title">
             Ready to simplify your taxes?
             <br />
             Start your journey today.
           </h2>
           <p>
-            Schedule a free discovery call to see how we can help your business thrive with accurate bookkeeping and expert
+            Schedule a free introductory meeting with our experts to see how we can help your business thrive with accurate bookkeeping and expert
             tax planning.
           </p>
           <Link className="faq-cta__button" href="/contact">

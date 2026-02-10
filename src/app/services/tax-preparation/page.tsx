@@ -20,8 +20,8 @@ import {
   Home,
 } from "lucide-react";
 export const metadata: Metadata = {
-  title: "Tax Preparation",
-  description: "Business and individual tax preparation with proactive guidance.",
+  title: "Tax Preparation for Individuals & Small Businesses | Taxcaliber",
+  description: "Individual and business tax prep with expert CPA guidance. Rental properties, S-corps, gig workers. Virtual service nationwide, real results.",
   alternates: {
     canonical: "/services/tax-preparation",
   },
@@ -99,7 +99,7 @@ export default function TaxPrepPage() {
       <div className="tax-prep-wrap">
         <section className="tax-prep-section">
           <span className="tax-prep-section__label">Who We Serve</span>
-          <h2 className="tax-prep-section__title">Tax prep built around your situation</h2>
+          <h2 className="section__title">Tax prep built around your situation</h2>
           <p className="tax-prep-section__desc">
             We prepare returns for individuals and small businesses with more than just a simple W-2, though we are happy to
             help with those too.
@@ -126,7 +126,7 @@ export default function TaxPrepPage() {
 
         <section className="tax-prep-section">
           <span className="tax-prep-section__label">Specialties</span>
-          <h2 className="tax-prep-section__title">Income types we know well</h2>
+          <h2 className="section__title">Income types we know well</h2>
           <p className="tax-prep-section__desc">
             Our experience covers the situations that most firms fumble. If your taxes feel complicated, you are in the
             right place.
@@ -169,7 +169,7 @@ export default function TaxPrepPage() {
 
         <section className="tax-prep-section">
           <span className="tax-prep-section__label">How It Works</span>
-          <h2 className="tax-prep-section__title">Our tax preparation process</h2>
+          <h2 className="section__title">Our tax preparation process</h2>
           <p className="tax-prep-section__desc">Straightforward from start to finish. No unnecessary back-and-forth.</p>
           <div className="tax-prep-steps">
             <div className="tax-prep-step">
@@ -212,7 +212,7 @@ export default function TaxPrepPage() {
 
         <section className="tax-prep-section" id="pricing">
           <span className="tax-prep-section__label">Pricing</span>
-          <h2 className="tax-prep-section__title">What to expect to pay</h2>
+          <h2 className="section__title">What to expect to pay</h2>
           <p className="tax-prep-section__desc">
             Fees vary based on the complexity of your return. A clear estimate is always provided before any work begins.
           </p>
@@ -259,7 +259,7 @@ export default function TaxPrepPage() {
 
         <section className="tax-prep-section">
           <span className="tax-prep-section__label">Scope</span>
-          <h2 className="tax-prep-section__title">What is in - and what is not</h2>
+          <h2 className="section__title">What is in - and what is not</h2>
           <p className="tax-prep-section__desc">
             Keeping scope clear means no confusion and no unexpected charges. Additional services are always available under
             a separate engagement.
@@ -353,7 +353,7 @@ export default function TaxPrepPage() {
 
         <section className="tax-prep-section">
           <span className="tax-prep-section__label">Why TaxCaliber</span>
-          <h2 className="tax-prep-section__title">Why clients choose us</h2>
+          <h2 className="section__title">Why clients choose us</h2>
           <div className="tax-prep-why">
             <div className="tax-prep-why__card">
               <BadgeCheck className="tax-prep-why__icon" aria-hidden="true" />
@@ -390,7 +390,7 @@ export default function TaxPrepPage() {
 
       <section className="tax-prep-bottom-cta">
         <div className="tax-prep-bottom-cta__inner">
-          <h2>Ready to simplify your taxes?</h2>
+          <h2 className="section__title">Ready to simplify your taxes?</h2>
           <p>Start with a free 15-minute call. No obligation - just a chance to see if we are the right fit.</p>
           <div className="tax-prep-bottom-cta__actions">
             <a

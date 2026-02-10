@@ -5,7 +5,7 @@ export default function NotFound() {
     <>
       <section className="about-hero">
         <div className="container about-hero__content">
-          <span className="about-tag">404</span>
+          <span className="section__eyebrow">404</span>
           <h1>Page not found</h1>
           <p>The page you are looking for doesn&apos;t exist or was moved.</p>
         </div>

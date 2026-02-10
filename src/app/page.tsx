@@ -4,9 +4,9 @@ import Link from "next/link";
 import CTA from "@/components/CTA";
 
 export const metadata: Metadata = {
-  title: "Home",
+  title: "Virtual CPA & Bookkeeping Services | Taxcaliber",
   description:
-    "High caliber service, zero stress. Taxcaliber provides virtual tax preparation and bookkeeping for small businesses and rental property owners.",
+    "Virtual bookkeeping and tax prep for small businesses nationwide. US-based CPA support from Phoenix-monthly bookkeeping, payroll, tax filing.",
   alternates: {
     canonical: "/",
   },
@@ -102,8 +102,7 @@ const badges = [
   { name: "NATP", src: "/images/NATP-logo.webp" },
   { name: "NSA", src: "/images/NSA-logo.webp" },
   { name: "AAATP", src: "/images/AAATP-logo.webp" },
-  { name: "Certified CPA", src: "/images/Certified-CPA.webp" },
-  { name: "Enrolled Agent", src: "/images/Enrolled-Agent.webp" },
+  { name: "Certified CPA", src: "/images/WAATP-logo.webp" },
 ];
 
 const CheckIcon = () => (
@@ -177,7 +176,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="section section--muted">
+      <section className="section section--bordered">
         <div className="container">
           <div className="section--center">
             <h2 className="section__title">Who We Help</h2>
@@ -198,12 +197,8 @@ export default function HomePage() {
             We combine professional expertise with modern convenience to give you peace of mind.
           </p>
           <div className="grid-3 feature-grid" style={{ marginTop: "30px", textAlign: "left" }}>
-            {reasons.map((reason, index) => (
-              <div
-                className={`card feature-card${index % 2 === 1 ? " feature-card--alt" : ""}`}
-                key={reason.title}
-              >
-                <div className="feature-card__bar" />
+            {reasons.map((reason) => (
+              <div className="card feature-card" key={reason.title}>
                 <div className="feature-card__icon" aria-hidden="true">
                   <span className="material-icons">{reason.icon}</span>
                 </div>
@@ -284,7 +279,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="section">
+      <section className="section section--bordered">
         <div className="container">
           <span className="section__eyebrow">How it works</span>
           <h2 className="section__title">Simple, guided, and transparent</h2>

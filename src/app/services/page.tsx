@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Services",
+  title: "Small Business Bookkeeping & Tax Services | Taxcaliber",
   description:
-    "Monthly bookkeeping, clean-up projects, payroll, sales tax filings, and tax preparation for individuals and small businesses.",
+    "Expert virtual CPA services for individuals and businesses nationwide: monthly bookkeeping, payroll, sales tax, S-corp filing. US-based support.",
   alternates: {
     canonical: "/services",
   },
@@ -93,8 +93,8 @@ export default function ServicesPage() {
       <section className="services-section">
         <div className="container">
           <div className="services-header">
-            <span className="services-header__tag">Services</span>
-            <h2>Full coverage for tax and bookkeeping</h2>
+            <span className="section__eyebrow">Services</span>
+            <h2 className="section__title">Full coverage for tax and bookkeeping</h2>
             <p>
               Professional financial services designed to help small businesses and individuals succeed with comprehensive,
               reliable support.
@@ -127,8 +127,8 @@ export default function ServicesPage() {
 
       <section className="services-how">
         <div className="container services-how__content">
-          <span className="services-how__tag">How it works</span>
-          <h2>Simple, guided, and transparent</h2>
+          <span className="section__eyebrow">How it works</span>
+          <h2 className="section__title">Simple, guided, and transparent</h2>
           <ul className="services-steps">
             {steps.map((step, index) => (
               <li className="services-step" key={step.title}>
@@ -145,7 +145,7 @@ export default function ServicesPage() {
 
       <section className="services-cta">
         <div className="container services-cta__content">
-          <h2>
+          <h2 className="section__title">
             Ready to simplify your taxes?
             <br />
             Start your journey today.
