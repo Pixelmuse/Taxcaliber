@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import FaqClient from "@/components/FaqClient";
+import CTA from "@/components/CTA";
 
 export const metadata: Metadata = {
   title: "Tax & Bookkeeping FAQs | Taxcaliber",
@@ -75,22 +75,7 @@ export default function FAQPage() {
         </div>
       </section>
 
-      <section className="faq-cta">
-        <div className="container faq-cta__content">
-          <h2 className="section__title">
-            Ready to simplify your taxes?
-            <br />
-            Start your journey today.
-          </h2>
-          <p>
-            Schedule a free introductory meeting with our experts to see how we can help your business thrive with accurate bookkeeping and expert
-            tax planning.
-          </p>
-          <Link className="faq-cta__button" href="/contact">
-            Book a Free Introductory Call
-          </Link>
-        </div>
-      </section>
+      <CTA />
     </>
   );
 }

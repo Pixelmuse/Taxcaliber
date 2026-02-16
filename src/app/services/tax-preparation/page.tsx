@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import {
   ArrowRight,
   BadgeCheck,
@@ -19,6 +20,7 @@ import {
   XCircle,
   Home,
 } from "lucide-react";
+import CalendlyPopupLink from "@/components/CalendlyPopupLink";
 export const metadata: Metadata = {
   title: "Tax Preparation for Individuals & Small Businesses | Taxcaliber",
   description: "Individual and business tax prep with expert CPA guidance. Rental properties, S-corps, gig workers. Virtual service nationwide, real results.",
@@ -388,23 +390,26 @@ export default function TaxPrepPage() {
 
       </div>
 
-      <section className="tax-prep-bottom-cta">
-        <div className="tax-prep-bottom-cta__inner">
+      <section className="services-cta">
+        <div className="container services-cta__content">
           <h2 className="section__title">Ready to simplify your taxes?</h2>
-          <p>Start with a free 15-minute call. No obligation - just a chance to see if we are the right fit.</p>
-          <div className="tax-prep-bottom-cta__actions">
-            <a
-              href="https://calendly.com/ruth-taxcaliber/15min"
+          <p>Start with a free 15-minute introductory meeting. No obligation - just a chance to see if we are the right fit.</p>
+          <div className="services-cta__actions">
+            <CalendlyPopupLink
+              className="services-cta__button"
               id="link_body_cta_book-meeting_bottom"
-              data-analytics-id="link_body_cta_book-meeting_bottom"
-              target="_blank"
-              rel="noreferrer"
+              analyticsId="link_body_cta_book-meeting_bottom"
             >
-              Book a Meeting
-            </a>
-            <a href="/services" id="link_body_cta_view-services" data-analytics-id="link_body_cta_view-services">
+              Get a Custom Quote
+            </CalendlyPopupLink>
+            <Link
+              className="services-cta__button services-cta__button--ghost"
+              href="/services"
+              id="link_body_cta_view-services"
+              data-analytics-id="link_body_cta_view-services"
+            >
               View All Services
-            </a>
+            </Link>
           </div>
         </div>
       </section>

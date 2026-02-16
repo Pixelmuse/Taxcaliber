@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import CTA from "@/components/CTA";
+import CalendlyPopupLink from "@/components/CalendlyPopupLink";
 
 export const metadata: Metadata = {
   title: "Virtual CPA & Bookkeeping Services | Taxcaliber",
@@ -57,12 +58,16 @@ const services = [
     description:
       "Clear deliverables, transparent pricing, and ongoing support for your daily financial tracking needs.",
     icon: "calendar_today",
+    href: "/services/bookkeeping",
+    id: "link_body_card_monthly-bookkeeping",
   },
   {
     title: "Bookkeeping clean-up",
     description:
       "Get back on track with our specialized clean-up services. We organize your past records efficiently.",
     icon: "restore_page",
+    href: "/services/bookkeeping#bookkeeping-cleanup",
+    id: "link_body_card_bookkeeping-clean-up",
   },
   {
     title: "Payroll services",
@@ -81,6 +86,8 @@ const services = [
     description:
       "Personalized tax preparation services designed to maximize your returns and minimize stress.",
     icon: "person",
+    href: "/services/tax-preparation",
+    id: "link_body_card_individual-tax-prep",
   },
   {
     title: "Small business tax",
@@ -152,17 +159,16 @@ export default function HomePage() {
               </li>
             </ul>
             <div className="hero__actions">
-              <Link
+              <CalendlyPopupLink
                 className="button hero__cta-primary"
-                href="/contact"
                 id="link_hero_cta_book-meeting"
-                data-analytics-id="link_hero_cta_book-meeting"
+                analyticsId="link_hero_cta_book-meeting"
               >
                 Book a Meeting
                 <span style={{ display: "inline-flex", marginLeft: "8px" }} aria-hidden="true">
                   {"\u2192"}
                 </span>
-              </Link>
+              </CalendlyPopupLink>
               <Link
                 className="button hero__cta-secondary"
                 href="/services"
@@ -249,17 +255,34 @@ export default function HomePage() {
           </div>
           <div className="grid-3 feature-grid" style={{ marginTop: "30px", textAlign: "left" }}>
             {services.map((service) => (
-              <div className="service-card" key={service.title}>
-                <span className="material-icons service-card__watermark" aria-hidden="true">
-                  {service.icon}
-                </span>
-                <div className="service-card__content">
-                  <div className="service-card__icon" aria-hidden="true">
-                    <span className="material-icons">{service.icon}</span>
+              <div key={service.title}>
+                {service.href ? (
+                  <Link href={service.href} id={service.id} data-analytics-id={service.id} className="service-card service-card--link">
+                    <span className="material-icons service-card__watermark" aria-hidden="true">
+                      {service.icon}
+                    </span>
+                    <div className="service-card__content">
+                      <div className="service-card__icon" aria-hidden="true">
+                        <span className="material-icons">{service.icon}</span>
+                      </div>
+                      <h3>{service.title}</h3>
+                      <p>{service.description}</p>
+                    </div>
+                  </Link>
+                ) : (
+                  <div className="service-card">
+                    <span className="material-icons service-card__watermark" aria-hidden="true">
+                      {service.icon}
+                    </span>
+                    <div className="service-card__content">
+                      <div className="service-card__icon" aria-hidden="true">
+                        <span className="material-icons">{service.icon}</span>
+                      </div>
+                      <h3>{service.title}</h3>
+                      <p>{service.description}</p>
+                    </div>
                   </div>
-                  <h3>{service.title}</h3>
-                  <p>{service.description}</p>
-                </div>
+                )}
               </div>
             ))}
           </div>

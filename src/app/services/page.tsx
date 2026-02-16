@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import CTA from "@/components/CTA";
 
 export const metadata: Metadata = {
   title: "Small Business Bookkeeping & Tax Services | Taxcaliber",
@@ -143,27 +143,7 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      <section className="services-cta">
-        <div className="container services-cta__content">
-          <h2 className="section__title">
-            Ready to simplify your taxes?
-            <br />
-            Start your journey today.
-          </h2>
-          <p>
-            Schedule a free discovery call to see how we can help your business thrive with accurate bookkeeping and expert
-            tax planning.
-          </p>
-          <Link
-            className="services-cta__button"
-            href="/contact"
-            id="link_body_cta_book-introductory-call"
-            data-analytics-id="link_body_cta_book-introductory-call"
-          >
-            Book a Free Introductory Call
-          </Link>
-        </div>
-      </section>
+      <CTA />
     </>
   );
 }

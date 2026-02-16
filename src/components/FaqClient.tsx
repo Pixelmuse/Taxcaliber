@@ -62,7 +62,7 @@ export default function FaqClient({ items }: FaqClientProps) {
         })}
         {filtered.length === 0 && query ? (
           <div className="faq-empty">
-            No answers found for "{query}". Try different keywords or reach out directly.
+            No answers found for &quot;{query}&quot;. Try different keywords or reach out directly.
           </div>
         ) : null}
       </div>

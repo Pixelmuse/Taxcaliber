@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import ContactForm from "@/components/ContactForm";
+import CTA from "@/components/CTA";
 import { Handshake, MessageCircle, ShieldCheck, Target } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -167,6 +168,8 @@ export default function ContactPage() {
           </div>
         </div>
       </section>
+
+      <CTA />
     </>
   );
 }

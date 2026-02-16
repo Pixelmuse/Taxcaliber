@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import CalendlyPopupLink from "@/components/CalendlyPopupLink";
 import {
   ArrowRight,
   BadgeCheck,
@@ -24,6 +25,37 @@ export const metadata: Metadata = {
 };
 
 export default function BookkeepingPage() {
+  const bookkeepingPlans = [
+    { key: "essentials", name: "Essentials", price: "$250/month" },
+    { key: "plus", name: "Plus", price: "$500/month" },
+    { key: "pro", name: "Pro", price: "$800/month" },
+  ] as const;
+
+  const bookkeepingFeatures = [
+    { label: "Monthly transaction categorization", values: { essentials: "included", plus: "included", pro: "included" } },
+    { label: "Monthly transaction limit", values: { essentials: "Up to 100", plus: "Up to 200", pro: "Up to 400" } },
+    { label: "Bank & credit card reconciliations", values: { essentials: "Up to 2 accounts", plus: "Up to 4 accounts", pro: "Multiple accounts" } },
+    { label: "Monthly P&L and balance sheet", values: { essentials: "included", plus: "included", pro: "included" } },
+    { label: "Year-end tax-ready financials", values: { essentials: "included", plus: "included", pro: "included" } },
+    { label: "Secure client portal", values: { essentials: "included", plus: "included", pro: "included" } },
+    { label: "Email support", values: { essentials: "Standard", plus: "Priority", pro: "Priority" } },
+    { label: "Sales tax filing (single state)", values: { essentials: "not_included", plus: "included", pro: "included" } },
+    { label: "Payroll processing", values: { essentials: "not_included", plus: "not_included", pro: "included" } },
+    { label: "Custom reporting", values: { essentials: "not_included", plus: "not_included", pro: "included" } },
+  ] as const;
+
+  const formatDesktopValue = (value: string) => {
+    if (value === "included") return "✓";
+    if (value === "not_included") return "—";
+    return value;
+  };
+
+  const formatMobileValue = (value: string) => {
+    if (value === "included") return "Included";
+    if (value === "not_included") return "Not included";
+    return value;
+  };
+
   return (
     <>
       <section className="page-hero page-hero--dark bookkeeping-hero">
@@ -99,37 +131,40 @@ export default function BookkeepingPage() {
           <div className="bookkeeping-table" id="packages">
             <div className="bookkeeping-table__head">
               <div>Feature</div>
-              <div>
-                <div className="bookkeeping-table__plan">Essentials</div>
-                <div className="bookkeeping-table__price">$250/month</div>
-              </div>
-              <div>
-                <div className="bookkeeping-table__plan">Plus</div>
-                <div className="bookkeeping-table__price">$500/month</div>
-              </div>
-              <div>
-                <div className="bookkeeping-table__plan">Pro</div>
-                <div className="bookkeeping-table__price">$800/month</div>
-              </div>
+              {bookkeepingPlans.map((plan) => (
+                <div key={plan.key}>
+                  <div className="bookkeeping-table__plan">{plan.name}</div>
+                  <div className="bookkeeping-table__price">{plan.price}</div>
+                </div>
+              ))}
             </div>
-            {[
-              ["Monthly transaction categorization", "✓", "✓", "✓"],
-              ["Monthly transaction limit", "Up to 100", "Up to 200", "Up to 400"],
-              ["Bank & credit card reconciliations", "Up to 2 accounts", "Up to 4 accounts", "Multiple accounts"],
-              ["Monthly P&L and balance sheet", "✓", "✓", "✓"],
-              ["Year-end tax-ready financials", "✓", "✓", "✓"],
-              ["Secure client portal", "✓", "✓", "✓"],
-              ["Email support", "Standard", "Priority", "Priority"],
-              ["Sales tax filing (single state)", "—", "✓", "✓"],
-              ["Payroll processing", "—", "—", "✓"],
-              ["Custom reporting", "—", "—", "✓"],
-            ].map(([feature, essentials, plus, pro]) => (
-              <div className="bookkeeping-table__row" key={feature}>
-                <div>{feature}</div>
-                <div>{essentials}</div>
-                <div>{plus}</div>
-                <div>{pro}</div>
+            {bookkeepingFeatures.map((feature) => (
+              <div className="bookkeeping-table__row" key={feature.label}>
+                <div>{feature.label}</div>
+                <div>{formatDesktopValue(feature.values.essentials)}</div>
+                <div>{formatDesktopValue(feature.values.plus)}</div>
+                <div>{formatDesktopValue(feature.values.pro)}</div>
               </div>
+            ))}
+          </div>
+          <div className="bookkeeping-plans-mobile" aria-label="Bookkeeping package comparison">
+            {bookkeepingPlans.map((plan) => (
+              <article className="bookkeeping-plan-card" key={plan.key}>
+                <header className="bookkeeping-plan-card__head">
+                  <h3>{plan.name}</h3>
+                  <p>{plan.price}</p>
+                </header>
+                <ul className="bookkeeping-plan-card__list">
+                  {bookkeepingFeatures.map((feature) => (
+                    <li className="bookkeeping-plan-card__item" key={`${plan.key}-${feature.label}`}>
+                      <span className="bookkeeping-plan-card__label">{feature.label}</span>
+                      <span className="bookkeeping-plan-card__value">
+                        {formatMobileValue(feature.values[plan.key])}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </article>
             ))}
           </div>
           <p className="bookkeeping-note">
@@ -152,7 +187,7 @@ export default function BookkeepingPage() {
               { title: "Additional accounts", icon: <Layers aria-hidden="true" />, text: "Extra bank or credit card accounts beyond your package limit." },
               { title: "Additional transactions", icon: <ListChecks aria-hidden="true" />, text: "Handle spikes or ongoing volume beyond your tier's monthly limit." },
               { title: "Additional rental properties", icon: <NotebookText aria-hidden="true" />, text: "Per-property tracking for real estate investors with multiple rentals." },
-              { title: "QuickBooks setup", icon: <LineChart aria-hidden="true" />, text: "OOne-time setup or conversion to get your books configured properly." },
+              { title: "QuickBooks setup", icon: <LineChart aria-hidden="true" />, text: "One-time setup or conversion to get your books configured properly." },
               { title: "1099 preparation & filing", icon: <FileText aria-hidden="true" />, text: "Annual contractor reporting and filing service." },
             ].map((addon) => (
               <div className="bookkeeping-addon" key={addon.title}>
@@ -219,7 +254,7 @@ export default function BookkeepingPage() {
             </div>
           </div>
 
-          <div className="bookkeeping-detail">
+          <div className="bookkeeping-detail" id="bookkeeping-cleanup">
             <span className="section__eyebrow">Clean-up & catch-up</span>
             <h2 className="section__title">Get your books back on track</h2>
             <p className="section__subtitle">
@@ -262,7 +297,7 @@ export default function BookkeepingPage() {
               <div className="bookkeeping-cleanup__card">
                 <div className="bookkeeping-cleanup__tag">Starting investment</div>
                 <div className="bookkeeping-cleanup__price">
-                  $300 <span>per month of clean-up</span>
+                  $250 <span>per month of clean-up</span>
                 </div>
                 <a
                   className="bookkeeping-cleanup__cta"
@@ -327,20 +362,17 @@ export default function BookkeepingPage() {
             Start your journey today.
           </h2>
           <p>
-            Start with a free 15-minute call. No obligation—just a chance to see if we&apos;re the right fit for your
+            Start with a free 15-minute introductory meeting. No obligation—just a chance to see if we&apos;re the right fit for your
             business.
           </p>
           <div className="services-cta__actions">
-            <a
+            <CalendlyPopupLink
               className="services-cta__button"
-              href="https://calendly.com/ruth-taxcaliber/15min"
               id="link_body_cta_book-meeting_bookkeeping-bottom"
-              data-analytics-id="link_body_cta_book-meeting_bookkeeping-bottom"
-              target="_blank"
-              rel="noreferrer"
+              analyticsId="link_body_cta_book-meeting_bookkeeping-bottom"
             >
               Get a Custom Quote
-            </a>
+            </CalendlyPopupLink>
             <Link className="services-cta__button services-cta__button--ghost" href="/services">
               View All Services
             </Link>
@@ -350,3 +382,4 @@ export default function BookkeepingPage() {
     </>
   );
 }
+

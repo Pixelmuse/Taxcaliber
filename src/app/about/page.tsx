@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
+import CTA from "@/components/CTA";
 
 export const metadata: Metadata = {
   title: "About Taxcaliber | Virtual CPA Phoenix Arizona",
@@ -85,11 +85,11 @@ export default function AboutPage() {
           <div className="about-mission__content">
             <span className="section__eyebrow">Who we are</span>
             <h2 className="section__title">A US-based virtual firm built for real people</h2>
-            <p className="section__subtitle" >
+            <p className="section__subtitle">
               We understand the complexities of tax code and bookkeeping can be overwhelming. Our mission is to strip away
               the confusion and provide clarity, confidence, and peace of mind.
             </p>
-            <p>
+            <p className="section__subtitle">
               We believe in treating every client with respect and empathy. Whether you are a freelancer, a small business
               owner, or managing rental properties, we are here to support your journey without the intimidation factor.
             </p>
@@ -169,27 +169,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="about-cta">
-        <div className="container about-cta__content">
-          <h2 className="section__title">
-            Ready to simplify your taxes?
-            <br />
-            Start your journey today.
-          </h2>
-          <p>
-            Schedule a free discovery call to see how we can help your business thrive with accurate bookkeeping and expert
-            tax planning.
-          </p>
-          <Link
-            className="about-cta__button"
-            href="/contact"
-            id="link_body_cta_book-introductory-call"
-            data-analytics-id="link_body_cta_book-introductory-call"
-          >
-            Book a Free Introductory Call
-          </Link>
-        </div>
-      </section>
+      <CTA />
     </>
   );
 }
