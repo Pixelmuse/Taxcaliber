@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import CTA from "@/components/CTA";
 
 export const metadata: Metadata = {
-  title: "Small Business Bookkeeping & Tax Services | Taxcaliber",
+  title: "Tax & Bookkeeping Services | Taxcaliber CPA",
   description:
-    "Expert virtual CPA services for individuals and businesses nationwide: monthly bookkeeping, payroll, sales tax, S-corp filing. US-based support.",
+    "Expert CPA services for individuals and businesses: monthly bookkeeping, payroll, sales tax, S-corp filing. Serving clients nationwide.",
   alternates: {
     canonical: "/services",
   },

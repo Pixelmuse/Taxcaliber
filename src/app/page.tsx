@@ -5,9 +5,9 @@ import CTA from "@/components/CTA";
 import CalendlyPopupLink from "@/components/CalendlyPopupLink";
 
 export const metadata: Metadata = {
-  title: "Virtual CPA & Bookkeeping Services | Taxcaliber",
+  title: "Bookkeeping & Tax Services for Small Business | Taxcaliber CPA",
   description:
-    "Virtual bookkeeping and tax prep for small businesses nationwide. US-based CPA support from Phoenix-monthly bookkeeping, payroll, tax filing.",
+    "Professional bookkeeping and tax prep for small businesses nationwide. US-based CPA support-monthly bookkeeping, payroll, tax filing.",
   alternates: {
     canonical: "/",
   },

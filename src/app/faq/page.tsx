@@ -3,8 +3,8 @@ import FaqClient from "@/components/FaqClient";
 import CTA from "@/components/CTA";
 
 export const metadata: Metadata = {
-  title: "Tax & Bookkeeping FAQs | Taxcaliber",
-  description: "Common questions about our virtual bookkeeping, tax prep, and services. Learn how Taxcaliber helps businesses nationwide.",
+  title: "Tax & Bookkeeping FAQs | Taxcaliber CPA",
+  description: "Common questions about bookkeeping, tax prep, pricing, and services. Learn how Taxcaliber helps small businesses stay organized.",
   alternates: {
     canonical: "/faq",
   },

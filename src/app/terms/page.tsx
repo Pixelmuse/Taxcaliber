@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Terms of Service | Taxcaliber",
-  description: "Review Taxcaliber's terms of service, usage guidelines, client responsibilities, and service agreements for bookkeeping and tax prep.",
+  title: "Terms of Service | Taxcaliber CPA",
+  description: "Review Taxcaliber's terms of service, usage guidelines, client responsibilities, and service agreements.",
   alternates: {
     canonical: "/terms",
   },

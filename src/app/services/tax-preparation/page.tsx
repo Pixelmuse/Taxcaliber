@@ -22,8 +22,8 @@ import {
 } from "lucide-react";
 import CalendlyPopupLink from "@/components/CalendlyPopupLink";
 export const metadata: Metadata = {
-  title: "Tax Preparation for Individuals & Small Businesses | Taxcaliber",
-  description: "Individual and business tax prep with expert CPA guidance. Rental properties, S-corps, gig workers. Virtual service nationwide, real results.",
+  title: "Small Business Tax Preparation | Taxcaliber CPA",
+  description: "Individual and business tax prep with expert guidance. Rental properties, S-corps, gig workers. Nationwide service, personalized support.",
   alternates: {
     canonical: "/services/tax-preparation",
   },

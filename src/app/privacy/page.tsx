@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy | Taxcaliber",
-  description: "Learn how Taxcaliber protects your financial data with bank-level security, secure portals, and strict privacy compliance standards.",
+  title: "Privacy Policy | Taxcaliber CPA",
+  description: "Learn how Taxcaliber protects your financial data with bank-level security, secure portals, and strict privacy compliance.",
   alternates: {
     canonical: "/privacy",
   },

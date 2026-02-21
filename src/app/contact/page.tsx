@@ -4,8 +4,8 @@ import CTA from "@/components/CTA";
 import { Handshake, MessageCircle, ShieldCheck, Target } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Contact Taxcaliber | Virtual CPA Services",
-  description: "Schedule a free consultation to discuss your tax and bookkeeping needs. Virtual CPA serving clients nationwide. Call 602-819-3395.",
+  title: "Contact Taxcaliber | Schedule Free Introductary Meeting",
+  description: "Schedule a free introductary meeting for your tax and bookkeeping needs. Serving clients nationwide. Call 602-819-3395 today.",
   alternates: {
     canonical: "/contact",
   },

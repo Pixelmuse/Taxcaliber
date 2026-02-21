@@ -3,9 +3,9 @@ import Image from "next/image";
 import CTA from "@/components/CTA";
 
 export const metadata: Metadata = {
-  title: "About Taxcaliber | Virtual CPA Phoenix Arizona",
+  title: "About Taxcaliber | CPA & Bookkeeping Phoenix AZ",
   description:
-    "Phoenix-based virtual CPA firm led by Ruth Ortega, CPA, EA. Judgment-free tax and bookkeeping for small businesses nationwide.",
+    "Phoenix-based CPA firm led by Ruth Ortega, CPA, EA. Judgment-free tax and bookkeeping support for small businesses nationwide.",
   alternates: {
     canonical: "/about",
   },
